@@ -2,9 +2,13 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
 
+
+sonata_admin:
+    title:      Сайт.Ру
+
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }

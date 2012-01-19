@@ -1,0 +1,60 @@
+{% use 'form_table_layout.html.twig' %}
+{% form_theme form _self %}
+
+<script language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+<form action="{{ entity.id  ?
+                path('news_update', { 'id': entity.id }) : path('news_create') }}" method="post" {{ form_enctype(form) }}>
+
+{{ form_errors(form) }}
+<table>
+  {{ form_row (form.title) }}
+  {{ form_row (form.announce) }}
+  {{ form_row (form.text) }}
+  {{ form_row (form.pubDate) }}
+  {{ form_row (form.newsCategory) }}
+  <tr>
+   <td valign="top">Ссылки к новости</td>
+   <td>
+
+   <!-- Шаблон вывода строки с полем занесения/редактирования ссылки к новости -->
+   {% macro linkRow(link) %}
+   <tr>
+    <td>{{ form_widget(link.url) }}</td>
+    <td>{{ form_widget(link.text) }}</td>
+    <td><a href="#" class="deleteRowLink">X</a></td>
+   </tr>
+  {% endmacro %}
+
+  <!-- В этом контейнере находится шаблон строки занесения/редактирования ссылки к новости -->
+  <!-- При нажатии на кнопку #addLink он добавляется к таблице -->
+   <script type="text/html" id="nl">{{ _self.linkRow (form.newsLinks.get('prototype')) }}  </script>
+
+  <!-- Таблица в которой будет выводиться список занесенных ссылок -->
+  <table id="linksTable">
+  <tr><td>Url</td><td>Название ссылки</td></tr>
+  {% for key, link in form.newsLinks %}
+     {{ _self.linkRow(link) }}
+  {% endfor %}
+   </table>
+
+
+   <input type="button" id="addLink" value="Добавить ссылку">
+
+   <script>
+   $(function() {
+		$("#addLink" ).click(function() {
+            $('#linksTable tbody').append($('#nl').html().replace(/\$\$name\$\$/g, $('#linksTable tbody tr').length));  });
+		$("form a.deleteRowLink").live('click', function() {
+            $(this).closest('tr').remove(); });
+	});
+   </script>
+
+   </td>
+  </tr>
+</table>
+
+{{ form_rest(form) }}
+
+ <p><button type="submit">Сохранить</button></p>
+</form>

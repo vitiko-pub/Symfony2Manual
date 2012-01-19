@@ -1,0 +1,39 @@
+<h1>News</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>                <td>{{ entity.id }}</td>        </tr>
+        <tr>
+            <th>Title</th>                <td>{{ entity.title }}</td>        </tr>
+        <tr>
+            <th>Announce</th>                <td>{{ entity.announce }}</td>        </tr>
+        <tr>
+            <th>Text</th>                <td>{{ entity.text }}</td>        </tr>
+        <tr>
+            <th>Createdat</th>                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Updatedat</th>                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>        </tr>
+        <tr>
+            <th>Pubdate</th>                <td>{{ entity.pubDate|date('Y-m-d H:i:s') }}</td>        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('news') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('news_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('news_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

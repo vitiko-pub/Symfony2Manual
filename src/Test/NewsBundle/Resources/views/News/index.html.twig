@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<h1>Новости</h1>
+
+{% form_theme search_form 'form_table_layout.html.twig' %}
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/redmond/jquery-ui.css">
+
+<script>
+	$(function() {
+		$("form input.date").datepicker({    dateFormat: 'yy-mm-dd'});
+	});
+</script>
+
+<form action="{{ path('news') }}" method="get">
+{{ form_errors(search_form) }}
+ <table>
+   {{ form_row(search_form.search) }}
+   {{ form_row(search_form.category)}}
+    <tr>
+     <td colspan="2">Дата новости</td>
+    </tr>
+    {{ form_row(search_form.dateFrom)}}
+    {{ form_row(search_form.dateTo)}}
+
+    {{ form_rest(search_form) }}
+ </table>
+ <button type="submit">Искать</button>
+</form>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Анонс</th>
+            <th>Категория</th>
+            <th>Дата</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in pagination %}
+        <tr>
+            <td><a href="{{ path('news_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.title }}</td>
+            <td>{{ entity.announce }}</td>
+            <td>{{ entity.newsCategory }}</td>
+
+            <td>{{ entity.pubDate|date('Y-m-d') }}</td>
+            <td>
+                <ul>
+                    <li><a href="{{ path('news_show', { 'id': entity.id }) }}">Смотреть</a></li>
+                    <li><a href="{{ path('news_edit', { 'id': entity.id }) }}">Редактировать</a></li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<div class="navigation">
+    {{ pagination.render()|raw }}
+</div>
+
+
+<ul>
+    <li>
+        <a href="{{ path('news_new') }}">
+            Создать новость
+        </a>
+    </li>
+</ul>
+{% endblock %}

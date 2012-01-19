@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="test.news.admin.news" class="Test\NewsBundle\Admin\NewsAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Новости" label="Новости"/>
+            <argument/>
+            <argument>Test\NewsBundle\Entity\News</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+        <service id="test.news.admin.newsLink" class="Test\NewsBundle\Admin\NewsLinkAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Новости" label="Ссылки к новостям"/>
+            <argument/>
+            <argument>Test\NewsBundle\Entity\NewsLink</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+        <service id="test.news.admin.newsCategory" class="Test\NewsBundle\Admin\NewsCategoryAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Новости" label="Категории новостей"/>
+            <argument/>
+            <argument>Test\NewsBundle\Entity\NewsCategory</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
+</container>

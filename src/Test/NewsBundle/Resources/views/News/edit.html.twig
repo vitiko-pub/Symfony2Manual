@@ -1,0 +1,17 @@
+<h1>Редактирование новости</h1>
+
+{% include 'TestNewsBundle:News:form.html.twig' with { 'form' : edit_form } %}
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('news') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('news_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

@@ -8,7 +8,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class NewsAdmin extends Admin

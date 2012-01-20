@@ -41,21 +41,6 @@ class NewsType extends AbstractType
                                              'label' => 'Год',
                                              'required' => false,
                                         ));
-
-
-        /*    $builder->add('availability', 'choice', array(
-             'choices' => array(
-                 'morning' => 'Morning',
-                 'afternoon' => 'Afternoon',
-                 'evening' => 'Evening',
-             ),
-
-             'data' => 'afternoon',
-             'property_path' => 'availability',
-             'required' => false
-        ));*/
-
-
     }
 
 
@@ -89,9 +74,7 @@ class YearChoiceList implements \Symfony\Component\Form\Extension\Core\ChoiceLis
             "SELECT DISTINCT SUBSTRING (n.pubDate,1,4) AS year FROM TestNewsBundle:News n ORDER BY year")->getResult();
 
         $arr = array();
-
         foreach ($years as $y) $arr[$y['year']] = $y['year'];
-
         return $arr;
     }
 }

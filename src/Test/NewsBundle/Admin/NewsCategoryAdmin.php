@@ -8,13 +8,10 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class NewsCategoryAdmin extends Admin
 {
-
-
     /**
      * Конфигурация формы редактирования записи
      * @param \Sonata\AdminBundle\Form\FormMapper $formMapper
@@ -51,6 +48,4 @@ class NewsCategoryAdmin extends Admin
         $datagridMapper
                 ->add('name', null, array('label' => 'Название'));
     }
-
-
 }

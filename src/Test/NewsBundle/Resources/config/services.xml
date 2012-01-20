@@ -10,7 +10,7 @@
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
         <service id="test.news.admin.newsLink" class="Test\NewsBundle\Admin\NewsLinkAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Новости" label="Ссылки к новостям"/>
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" />
             <argument/>
             <argument>Test\NewsBundle\Entity\NewsLink</argument>
             <argument>SonataAdminBundle:CRUD</argument>

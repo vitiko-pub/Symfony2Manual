@@ -27,7 +27,7 @@ class NewsAdmin extends Admin
         //порядок привязанных NewsLink будет таким, как определено в html-форме
         //(учитывая возможные перемещения строк таблицы с полями редактирования NewsLink)
 
-        //В отличии от порядока записей NewsLink редактируемого объекта - он такой, как возвращает Doctrine
+        //В отличии от порядка записей NewsLink редактируемого объекта - он такой, как возвращает Doctrine
         $this->getForm()->setData($emptyObj)->bindRequest($this->getRequest());
 
         $newLinkPos = array();

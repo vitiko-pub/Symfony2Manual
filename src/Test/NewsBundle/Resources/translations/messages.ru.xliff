@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="ru" datatype="plaintext" original="" >
+        <body>
+           <trans-unit id="News List">
+                <source>News List</source>
+                <target>Список новостей</target>
+            </trans-unit>
+           <trans-unit id="News Create">
+                <source>News Create</source>
+                <target>Создание новости</target>
+           </trans-unit>
+           <trans-unit id="News Edit">
+                <source>News Edit</source>
+                <target>Редактирование новости</target>
+           </trans-unit>
+
+           <trans-unit id="News Category List">
+                <source>News Category List</source>
+                <target>Список категорий новостей</target>
+            </trans-unit>
+           <trans-unit id="News Category Create">
+                <source>News Category Create</source>
+                <target>Создание категории новости</target>
+           </trans-unit>
+           <trans-unit id="News Category Edit">
+                <source>News Category Edit</source>
+                <target>Редактирование категории новостей</target>
+           </trans-unit>
+        </body>
+    </file>
+</xliff>
